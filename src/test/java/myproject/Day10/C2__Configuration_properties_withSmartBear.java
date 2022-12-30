@@ -26,8 +26,9 @@ public class C2__Configuration_properties_withSmartBear extends TestBase {
         driver.findElement(By.id("ctl00_MainContent_orderGrid_ctl05_OrderSelector")).click();
         driver.findElement(By.id("ctl00_MainContent_btnDelete")).click();
         //verify if charles deleted from the list
-        SmartBearUtils.verifyName(driver,"Charles Dodgeson");
+        SmartBearUtils.verifyName(driver,"Charles Dodgeson");// first try
 
+        //teacher showed like that
         List<WebElement> ListOfNames = driver.findElements(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//tr//td[2]"));
 
         for (WebElement eachName:ListOfNames){
@@ -35,7 +36,7 @@ public class C2__Configuration_properties_withSmartBear extends TestBase {
         }
         System.out.println("verification has passed, \"Charles Dodgeson\" was deleted");
 
-        SmartBearUtils.verifyName2(driver,"Charles Dodgeson");
+        SmartBearUtils.verifyName2(driver,"Charles Dodgeson");//second try
     }
 
 
