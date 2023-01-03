@@ -20,9 +20,9 @@ driver.findElement(By.Tagname(<htmltagname>))
 driver.findElement(By.partialLinkText(<linktext>))
 ### 6. PartialLinkText
 driver.findElement(By.id(<ElementID>))
-### 8. CSS Selector
+### 7. CSS Selector
 driver.findElement(By.cssSelector(<cssSelector>))
-### 9. Xpath
+### 8. Xpath
 //tagname[@attribute='value']
 driver.findElement(By.xpath(<xpath>))
 
