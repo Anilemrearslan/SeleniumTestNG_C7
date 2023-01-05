@@ -8,6 +8,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -40,5 +41,7 @@ public class Lab12 extends TestBase2 {
         WebElement Text = DriverUtil.getDriver().findElement(By.cssSelector("#demo"));
         Assert.assertTrue(Text.getText().contains("Anil"),"verification has failed!");
         System.out.println("verification has passed!");
+        //Click on the 'home sign' (it is on the left side of page)
+
     }
 }

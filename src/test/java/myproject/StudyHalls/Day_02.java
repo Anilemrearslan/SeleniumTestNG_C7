@@ -9,6 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Day_02 {
@@ -23,6 +26,12 @@ public class Day_02 {
     By email = new By.ById("userEmail");
     By gender = new By.ByXPath("//label[contains(text(),'Male')]");
     By phoneNumber = new By.ById("userNumber");
+
+    By DateOfBirth = new By.ById("dateOfBirthInput");
+
+    By uploadFile = new By.ByCssSelector("#uploadPicture");
+
+
     @BeforeMethod
     public void lunchBrowser(){
         WebDriverManager.chromedriver().setup();
@@ -56,6 +65,14 @@ public class Day_02 {
             Assert.assertFalse(false);
         }
         driver.findElement(phoneNumber).sendKeys(faker.phoneNumber().phoneNumber());
-
+        String currentValue = driver.findElement(DateOfBirth).getAttribute("value");
+        System.out.println(currentValue);
+        // I need to verify value with current date
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+        String currentDate = dateFormat.format(date);
+        System.out.println(currentDate);
+        Assert.assertEquals(currentValue,currentDate);
+        driver.findElement(uploadFile).sendKeys("C:\\Users\\anile\\Desktop\\avatar.jpg");
     }
 }

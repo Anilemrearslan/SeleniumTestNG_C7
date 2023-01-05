@@ -4,17 +4,11 @@ import myproject.base.TestBase2;
 import myproject.utilities.BrowserUtils;
 import myproject.utilities.DriverUtil;
 import myproject.utilities.PropertiesReadingUtil;
-import myproject.utilities.WebDriverUtil;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.time.Duration;
 
 public class C3_Actions extends TestBase2 {
     //go to http://demo.guru99.com/test/simple_context_menu.html
