@@ -18,6 +18,6 @@ public abstract class TestBase2 {
 
     @AfterMethod
     public void closing(){
-         DriverUtil.closeDriver();
+        // DriverUtil.closeDriver();
     }
 }

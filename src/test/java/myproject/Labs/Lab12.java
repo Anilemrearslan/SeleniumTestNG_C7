@@ -12,18 +12,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Set;
+
 public class Lab12 extends TestBase2 {
-
-
-
-
-    //Click on the 'home sign' (it is on the left side of page)
-    //Switch to second window tab
-    //Click on the "log in" button
-    //Enter your credentials
-    //Enter the show password button
-    //Switch to first tab
-
     @Test
     public void TC1(){
         //Navigate to "https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt"
@@ -35,13 +26,31 @@ public class Lab12 extends TestBase2 {
         //Enter Your name on the Alert Box and Accept alert
         Alert alert = DriverUtil.getDriver().switchTo().alert();
         alert.sendKeys("Anil");
-
         alert.accept();
         //Verify that your name shown on the page
         WebElement Text = DriverUtil.getDriver().findElement(By.cssSelector("#demo"));
         Assert.assertTrue(Text.getText().contains("Anil"),"verification has failed!");
         System.out.println("verification has passed!");
         //Click on the 'home sign' (it is on the left side of page)
-
+        DriverUtil.getDriver().switchTo().defaultContent();
+        DriverUtil.getDriver().findElement(By.xpath("//a[@id='tryhome']")).click();
+        //Switch to second window tab
+        String FirstTab = DriverUtil.getDriver().getWindowHandle();
+        Set<String>Tabs = DriverUtil.getDriver().getWindowHandles();
+        for(String NewTab:Tabs) {
+            DriverUtil.getDriver().switchTo().window(NewTab);
+        }
+        //Click on the "log in" button
+        DriverUtil.getDriver().findElement(By.id("w3loginbtn")).click();
+        //Enter your credentials
+        WebElement eMailBox = DriverUtil.getDriver().findElement(By.xpath("//input[@name='email']"));
+        eMailBox.sendKeys(PropertiesReadingUtil.getProperties("MyEmail"));
+        WebElement passWordBox = DriverUtil.getDriver().findElement(By.xpath("//input[@name='current-password']"));
+        passWordBox.sendKeys(PropertiesReadingUtil.getProperties("MyPassWord"));
+        //Enter the show password button
+        WebElement ShowButton = DriverUtil.getDriver().findElement(By.xpath("//span[@class='PasswordInput_show_pwd_btn__Ncc9S']"));
+        ShowButton.click();
+        //Switch to first tab
+        DriverUtil.getDriver().switchTo().window(FirstTab);
     }
 }
